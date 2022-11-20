@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 10px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-wrap {
+  display: flex;
+}
+
+.subject-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.subject-box {
+  background-color: #333;
+  height: 100%;
+}
+
+.item-wrap {
+  background-color: #666;
+}
+
+.modal-outer {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 400px;
+  max-width: 600px;
+  min-height: 200px;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 2rem;
+
+  font-size: 1.6rem;
+}
+
+/* adder classes */
+.hidden {
+  display: none;
+}
+
+.modal-outer.open {
+  opacity: 1;
+  pointer-events: all;
+}

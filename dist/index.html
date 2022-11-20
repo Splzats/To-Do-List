@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <header>
+      <h1>To Do List</h1>
+      <div class="subject-title">Subject Title Here</div>
+    </header>
+    <div class="content-wrap">
+      <div class="subject-wrap">
+        <div class="subject-box"></div>
+        <button id="createSubjectBtn">Create Subject</button>
+      </div>
+      <div class="item-wrap"></div>
+    </div>
+
+    <!-- new subject modal form-->
+    <div class="modal-outer" id="subjectModal">
+      <div class="modal-inner">
+        <form>
+          <label for="subject">New Subject</label>
+          <br />
+          <input type="text" name="subject" id="subjectInput" />
+          <br />
+          <div class="error hidden" id="subjectError">
+            Fill out subject field!
+          </div>
+          <div class="error hidden" id="subjectDupError">
+            A Subject with that name already exists!
+          </div>
+          <button id="subjectFormBtn">Add Subject</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
