@@ -4,50 +4,201 @@
   padding: 0;
 }
 
-body {
+html {
   font-size: 10px;
+  font-family: "Raleway", sans-serif;
+  background-color: #f1f0ea;
 }
 
 header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  padding: 0.5rem;
+  height: 10vh;
+
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 0.5;
+  background-color: #f1f0ea;
+  color: #474448;
 }
 
 .content-wrap {
   display: flex;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .subject-wrap {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  align-items: center;
+  height: 100vh;
+  width: 25%;
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 6px;
+  background-color: #474448;
+  color: #f1f0ea;
+}
+
+.subject-header {
+  display: flex;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 .subject-box {
-  background-color: #333;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 95%;
+}
+
+#createSubjectBtn,
+.subject-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding: 0.5rem 4rem;
+  border-radius: 6px;
+  color: #f1f0ea;
+
+  transition: 0.3s;
+}
+
+#createSubjectBtn {
+  width: 95%;
+  border: 2px solid #f1f0ea;
+  background-color: #5fad56;
+}
+
+.subject-btn {
+  width: 100%;
+  border: none;
+  background-color: #449dd1;
+}
+
+.subject-btn:hover {
+  box-shadow: -4px 2px 0px 0px #eeb902;
+  transform: translate(12px, 0);
+}
+
+#createSubjectBtn:hover {
+  background-color: #6bc561;
 }
 
 .item-wrap {
-  background-color: #888;
+  background-color: #474448;
   width: 100%;
+  border-radius: 6px;
 }
 
 .subject-board {
   display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
   width: 100%;
   height: 100%;
+  padding: 1rem;
+  overflow: auto;
 }
 
 .item-btn {
-  width: 10rem;
-  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  font-size: 3.4rem;
+  color: #f1f0ea;
+  border: 2px solid #f1f0ea;
+  background-color: #5fad56;
+  border-radius: 6px;
+
+  transition: 0.3s;
+}
+
+.item-btn:hover {
+  background-color: #6bc561;
 }
 
 .item-card {
-  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  background-color: #f1f0ea;
+  color: #474448;
+  border-radius: 6px;
+}
+
+.card-priority {
+  height: 5%;
+}
+
+.card-priority.high-priority {
+  background-color: red;
+  border-radius: 6px 6px 0 0;
+}
+
+.card-priority.moderate-priority {
+  background-color: yellow;
+  border-radius: 6px 6px 0 0;
+}
+
+.card-priority.low-priority {
+  background-color: green;
+  border-radius: 6px 6px 0 0;
+}
+
+.card-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.card-description {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.6rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.card-due-date {
+  font-size: 1.6rem;
+}
+
+.card-delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 6px;
+  background-color: #5fad56;
+  color: #f1f0ea;
+  width: 30px;
+  height: 30px;
+  padding: 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.card-delete-btn:hover {
+  background-color: #6bc561;
 }
 
 /* modal styles*/
@@ -74,7 +225,7 @@ header {
   min-width: 400px;
   max-width: 600px;
   min-height: 200px;
-  background-color: #fff;
+  background-color: #f1f0ea;
   border-radius: 6px;
   padding: 2rem;
 
@@ -85,6 +236,51 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
+}
+
+.modal-inner form label {
+  font-weight: 600;
+}
+
+.modal-inner form input,
+.modal-inner form textarea,
+.modal-inner form select {
+  padding: 1rem;
+  width: 100%;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  border-radius: 6px;
+  outline: none;
+  border: 2px solid #474448;
+}
+
+.modal-inner form input:focus,
+.modal-inner form textarea:focus,
+.modal-inner form select:focus {
+  border: 2px solid #449dd1;
+}
+
+.modal-inner form textarea {
+  resize: none;
+}
+
+.error-box {
+  min-height: 100px;
+}
+
+.modal-inner form button {
+  border: none;
+  border-radius: 6px;
+  background-color: #5fad56;
+  color: #f1f0ea;
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 1rem 4rem;
+}
+
+.modal-inner form button:hover {
+  background-color: #6bc561;
 }
 
 /* adder classes */

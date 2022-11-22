@@ -4,18 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,700;0,900;1,200;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
     <title>To Do List</title>
   </head>
   <body>
     <header>
-      <h1>To Do List</h1>
-      <div class="subject-title">Subject Title Here</div>
+      <div class="subject-title"></div>
+      <div class="today">Today: <span id="date"></span></div>
     </header>
     <div class="content-wrap">
       <div class="subject-wrap">
+        <div class="subject-header">Subjects</div>
         <div class="subject-box"></div>
-        <button id="createSubjectBtn">Create Subject</button>
+        <button id="createSubjectBtn">+</button>
       </div>
       <div class="item-wrap"></div>
     </div>
@@ -28,12 +35,15 @@
           <br />
           <input type="text" name="subject" id="subjectInput" />
           <br />
-          <div class="error hidden" id="subjectError">
-            Fill out subject field!
+          <div class="error-box">
+            <div class="error hidden" id="subjectError">
+              Fill out subject field!
+            </div>
+            <div class="error hidden" id="subjectDupError">
+              A Subject with that name already exists!
+            </div>
           </div>
-          <div class="error hidden" id="subjectDupError">
-            A Subject with that name already exists!
-          </div>
+
           <button id="subjectFormBtn">Add Subject</button>
         </form>
       </div>
@@ -60,7 +70,18 @@
             <option value="moderate">Moderate</option>
             <option value="low">Low</option>
           </select>
-          <div class="error hidden" id="itemError">Fill out all field!</div>
+          <div class="error-box">
+            <div class="error hidden" id="itemTitleInputError">
+              A Title is required!
+            </div>
+            <div class="error hidden" id="itemTitleLongError">
+              Title can not be more than 23 characters.
+            </div>
+            <div class="error hidden" id="itemDescriptionLongError">
+              Description can not be more than 256 characters.
+            </div>
+          </div>
+
           <button id="itemFormBtn">Add Item</button>
         </form>
       </div>

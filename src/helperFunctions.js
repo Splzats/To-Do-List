@@ -70,4 +70,5 @@ export function setDateToday() {
   let yyyy = today.getFullYear();
   today = yyyy + "-" + mm + "-" + dd;
   itemDueDateInputElement.value = today;
+  return today;
 }

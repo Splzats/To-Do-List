@@ -9,14 +9,20 @@ import {
   openSubjectModal,
   itemModalElement,
   closeItemModal,
-  openItemModal,
   showSubjectError,
   removeSubjectError,
   showDupError,
   removeDupError,
   clearSubjectFormInput,
+  setDateToday,
 } from "./helperFunctions";
 import { renderCards } from "./renderItemCards";
+
+//subject header element
+const subjectTitleElement = document.querySelector(".subject-title");
+
+const todayElement = document.querySelector("#date");
+todayElement.innerHTML = setDateToday();
 
 //object for holding the name of subjects and an array of corresponding items
 const subjectCatalogObject = {};
@@ -51,8 +57,17 @@ subjectModalElement.addEventListener("click", function (event) {
 //close item modal, click outside
 itemModalElement.addEventListener("click", function (event) {
   const isOutside = !event.target.closest(".modal-inner");
+
+  const noTitleErrorElement = document.querySelector("#itemTitleInputError");
+  const toLongTitleErrorElement = document.querySelector("#itemTitleLongError");
+  const toLongDescriptionErrorElement = document.querySelector(
+    "#itemDescriptionLongError"
+  );
   if (isOutside) {
     closeItemModal();
+    toLongDescriptionErrorElement.classList.add("hidden");
+    toLongTitleErrorElement.classList.add("hidden");
+    noTitleErrorElement.classList.add("hidden");
   }
 });
 
@@ -91,8 +106,18 @@ itemFormBtnElement.addEventListener("click", function (event) {
   );
   const itemDueDateInputElement = document.querySelector("#itemDueDateInput");
   const itemPriorityInputElement = document.querySelector("#itemPriorityInput");
+  const noTitleErrorElement = document.querySelector("#itemTitleInputError");
+  const toLongTitleErrorElement = document.querySelector("#itemTitleLongError");
+  const toLongDescriptionErrorElement = document.querySelector(
+    "#itemDescriptionLongError"
+  );
 
   if (itemTitleInputElement.value.length === 0) {
+    noTitleErrorElement.classList.remove("hidden");
+  } else if (itemTitleInputElement.value.length > 23) {
+    toLongTitleErrorElement.classList.remove("hidden");
+  } else if (itemDescriptionInputElement.value.length > 256) {
+    toLongDescriptionErrorElement.classList.remove("hidden");
   } else {
     const newItemObject = new ItemObject(
       itemTitleInputElement.value,
@@ -106,6 +131,10 @@ itemFormBtnElement.addEventListener("click", function (event) {
     renderCards(subjectCatalogObject[currentBoard], currentBoard);
   }
 });
+
+function changeSubjectTitle() {
+  subjectTitleElement.innerHTML = currentBoard;
+}
 
 //creates subjectBtns
 function SubjectBtn(subject) {
@@ -129,6 +158,7 @@ function SubjectBtn(subject) {
         }
       });
       currentBoard = subject;
+      changeSubjectTitle();
     });
   };
 }
